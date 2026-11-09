@@ -1,8 +1,4 @@
 `timescale 1ns/1ps
-// SHA-512 compression core: one 1024-bit block per start, one round per clock.
-//   cont = 0 : start from the SHA-512 IV
-//   cont = 1 : continue from the previous chaining value (digest register)
-// digest holds the full 512-bit chaining value (the SHA-512 digest).
 module sha512_core (
     input  wire          clk,
     input  wire          rst_n,
