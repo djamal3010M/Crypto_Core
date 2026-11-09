@@ -1,15 +1,11 @@
 `timescale 1ns/1ps
-// Keccak-f[1600] sponge core for SHA-3 (SHA3-224/256/384/512): XORs one rate-sized block into the
-// state and runs the 24-round permutation, one round per clock.
-//   init = 1 : zero the state before absorbing (first block of a message)
-// State byte i is sq[8*i +: 8] (little-endian lanes: lane n = sq[64*n +: 64]).
-// The input block is big-endian-ordered: byte 0 is block[1151:1144]; only the first `bs` bytes are used.
+
 module sha3_256_core (
     input  wire          clk,
     input  wire          rst_n,
     input  wire          start,
     input  wire          init,
-    input  wire [8:0]    bs,           // rate in bytes (72, 104, 136 or 144)
+    input  wire [8:0]    bs,           
     input  wire [1151:0] block,
     output reg           busy,
     output reg           done,
@@ -94,7 +90,7 @@ module sha3_256_core (
     end
   endfunction
 
-  // XOR the first bs bytes of the big-endian block into the state
+ 
   function [1599:0] absorb(input [1599:0] s, input [1151:0] blk, input [8:0] n_bytes);
     integer i;
     reg [1599:0] o;
