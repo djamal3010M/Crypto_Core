@@ -1,14 +1,13 @@
 `timescale 1ns/1ps
-// SHA-256 compression core: one 512-bit (already padded) block per start.
-// One round per clock, 64 rounds + 1 finalisation cycle.
+
 module sha256_core (
     input  wire         clk,
     input  wire         rst_n,
     input  wire         start,
-    input  wire         cont,        // 1: continue from the previous chaining value (digest)
+    input  wire         cont,       
     input  wire [511:0] block,
     output reg          busy,
-    output reg          done,      // 1-cycle pulse, digest valid
+    output reg          done,      
     output reg  [255:0] digest
 );
   localparam [255:0] H256 = 256'h6a09e667_bb67ae85_3c6ef372_a54ff53a_510e527f_9b05688c_1f83d9ab_5be0cd19;
