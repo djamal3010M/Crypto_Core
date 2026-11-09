@@ -31,7 +31,7 @@ module hash_engine (
   reg         first;    
   reg         fin_q;    
   reg         last;     
-  reg         pstage; //padding stage  
+  reg         pstage; 
   reg [8:0]   fill;     
   reg [127:0] total;    
 
@@ -98,7 +98,7 @@ module hash_engine (
     case (alg_c)
       A_SHA256: dig_out = {s256_dig, 256'd0};
       A_SHA512: dig_out = s512_dig;
-      default:  dig_out = {kec_dig, 256'd0};   // SHA3-256
+      default:  dig_out = {kec_dig, 256'd0};   
     endcase
   end
 
